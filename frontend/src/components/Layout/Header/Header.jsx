@@ -13,23 +13,22 @@ import {
 } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import { BiMenuAltLeft } from "react-icons/bi";
-import store from '../../../store'; 
+import store from "../../../store";
 import { loadUser, logout } from "../../../actions/userAction";
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
 
 const Header = () => {
   const navigate = useNavigate();
-  const { isAuthenticated } = useSelector((state)=>state.user);
+  const { isAuthenticated } = useSelector((state) => state.user);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleLogout = () => {
-    if (isAuthenticated)  store.dispatch(logout());
-  }
+    if (isAuthenticated) store.dispatch(logout());
+  };
 
-
-  useEffect(()=>{
+  useEffect(() => {
     store.dispatch(loadUser());
-  },[]);
+  }, []);
 
   return (
     <>
@@ -55,15 +54,34 @@ const Header = () => {
           <DrawerHeader>BeyondBazaar</DrawerHeader>
           <DrawerBody>
             <VStack alignItems={"flex-start"}>
-              <Button onClick={onClose} variant={"ghost"} colorScheme="purple">
-                <Link to={"/"}>Home</Link>
-              </Button>
-              <Button onClick={onClose} variant={"ghost"} colorScheme="purple">
-                <Link to={"/products"}>Products</Link>
-              </Button>
-              <Button onClick={onClose} variant={"ghost"} colorScheme="purple">
-                <Link to={"/search"}>Search</Link>
-              </Button>
+              <Link to={"/"}>
+                <Button
+                  as="button"
+                  onClick={onClose}
+                  variant={"ghost"}
+                  colorScheme="purple"
+                >
+                  Home
+                </Button>
+              </Link>
+              <Link to={"/products"}>
+                <Button
+                  onClick={onClose}
+                  variant={"ghost"}
+                  colorScheme="purple"
+                >
+                  Products
+                </Button>
+              </Link>
+              <Link to={"/search"}>
+                <Button
+                  onClick={onClose}
+                  variant={"ghost"}
+                  colorScheme="purple"
+                >
+                  Search
+                </Button>
+              </Link>
             </VStack>
 
             {isAuthenticated ? (
@@ -74,25 +92,39 @@ const Header = () => {
                 width={"full"}
                 justifyContent="space-evenly"
               >
-                <Button onClick={()=> {onClose(); handleLogout(); navigate('/'); toast.success('LoggedOut Successfully!') }} colorScheme="purple">
-                  <Link to={"/logout"}>Logout</Link>
+                <Link to={"/logout"}>
+                <Button
+                  onClick={() => {
+                    onClose();
+                    handleLogout();
+                    navigate("/");
+                    toast.success("LoggedOut Successfully!");
+                  }}
+                  colorScheme="purple"
+                >
+                  Logout
                 </Button>
+                </Link>
 
+                <Link to={"/account"}>
                 <Button
                   onClick={onClose}
                   colorScheme="purple"
                   variant={"outline"}
                 >
-                  <Link to={"/account"}>My Profile</Link>
+                  My Profile
                 </Button>
+                </Link>
 
+                <Link to={"/cart"}>
                 <Button
                   onClick={onClose}
                   colorScheme="purple"
                   variant={"outline"}
                 >
-                  <Link to={"/cart"}>Cart</Link>
+                  Cart
                 </Button>
+                </Link>
               </HStack>
             ) : (
               <HStack
@@ -102,17 +134,21 @@ const Header = () => {
                 width={"full"}
                 justifyContent="space-evenly"
               >
-                <Button onClick={onClose} colorScheme="purple">
-                  <Link to={"/login"}>Login</Link>
-                </Button>
+                <Link to={"/login"}>
+                  <Button onClick={onClose} colorScheme="purple">
+                    Login
+                  </Button>
+                </Link>
 
-                <Button
-                  onClick={onClose}
-                  colorScheme="purple"
-                  variant={"outline"}
-                >
-                  <Link to={"/signup"}>SignUp</Link>
-                </Button>
+                <Link to={"/signup"}>
+                  <Button
+                    onClick={onClose}
+                    colorScheme="purple"
+                    variant={"outline"}
+                  >
+                    SignUp
+                  </Button>
+                </Link>
               </HStack>
             )}
           </DrawerBody>

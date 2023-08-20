@@ -12,6 +12,7 @@ import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { register, clearErrors } from "../../actions/userAction";
+import MetaData from "../Layout/MetaData";
 import Loader from "../Loader";
 
 const Signup = () => {
@@ -45,6 +46,7 @@ const Signup = () => {
     <Loader />
   ) : (
     <Container maxW={"container.xl"} h={"100vh"} p={"16"}>
+      <MetaData title='Signup'/>
       <form>
         <VStack
           alignItems={"stretch"}

@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { clearErrors } from '../../actions/productAction';
 import {login} from '../../actions/userAction';
+import MetaData from '../Layout/MetaData';
 import Loader from '../Loader';
 
 const Login = () => {
@@ -49,6 +50,7 @@ const Login = () => {
 
   return (
     (loading) ? <Loader/> : <Container maxW={'container.xl'} h={'100vh'} p={'16'}>
+      <MetaData title='Login'/>
     <form>
       <VStack
         alignItems={'stretch'}

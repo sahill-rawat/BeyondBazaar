@@ -6,6 +6,7 @@ import { clearErrors, getProducts } from "../../actions/productAction";
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from "react-hot-toast";
 import Loader from "../Loader";
+import MetaData from "../Layout/MetaData";
 const Home = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state)=>state.products)
@@ -28,6 +29,7 @@ const Home = () => {
   return (
     (loading) ?  (<Loader/>) : (
       <>
+      <MetaData title='BeyondBazaar'/>
       <Box>
         <VStack
           align="center"

@@ -71,7 +71,6 @@ const ProductDetails = () => {
     <>
       <MetaData title={product.name} />
       <Stack
-        bg="white"
         rowGap={"0"}
         columnGap="0"
         direction={{ base: "column", md: "row" }}
@@ -86,19 +85,21 @@ const ProductDetails = () => {
           textAlign={{ base: "center", md: "flex-start" }}
           w={{ base: "100%", md: "35%" }}
           h={{ base: "60%", md: "100%" }}
-          bg={"whiteAlpha.900"}
-          color="black"
+          // bg={"whiteAlpha.900"}
+          // color="black"
         >
           <Heading fontSize={"large"}> {product.name} </Heading>
-          <HStack color="white">
+          <HStack>
             <Box
+              color="white"
               textAlign={"center"}
               borderRadius={"3px"}
               p="min(0.5vmax, (4px))"
               bg="green"
             >{`${product.ratings}☆`}</Box>
-            <Text color="black"> {`${product.numOfReviews} Reviews`} </Text>
+            <Text> {`${product.numOfReviews} Reviews`} </Text>
             <Text
+              color="white"
               textAlign={"center"}
               borderRadius={"3px"}
               p="min(0.5vmax, (4px))"

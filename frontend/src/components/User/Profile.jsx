@@ -4,6 +4,7 @@ import Loader from "../Loader";
 import { Link, useNavigate } from "react-router-dom";
 import { HStack, Button, VStack, Image, Heading } from "@chakra-ui/react";
 import profilePng from "../../images/Profile.png";
+import MetaData from "../Layout/MetaData";
 
 const Profile = () => {
   const { user, loading, isAuthenticated } = useSelector((state) => state.user);
@@ -28,6 +29,7 @@ const Profile = () => {
       {loading ? (
         <Loader />
       ) : (
+        
         <VStack
           flex={"none"}
           align={"center"}
@@ -37,6 +39,7 @@ const Profile = () => {
           color="black"
           bg={"white"}
         >
+          <MetaData title='My Account'/>
           <Image w="25vh" src={profilePng} alt="User" />
           <VStack
             mb="3vh"
