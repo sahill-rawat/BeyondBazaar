@@ -14,7 +14,7 @@ process.on("uncaughtException", (err) => {
 
 // Dotenv loads environment variables from a .env file into process.env
 if (process.env.NODE_ENV !== "PRODUCTION") {
-  require("dotenv").config({ path: "backend/config/config.env" });
+  require("dotenv").config({ path: "./config/config.env" });
 }
 
 //connecting to db
